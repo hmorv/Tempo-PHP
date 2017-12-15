@@ -3,6 +3,7 @@
 class Tempo
 {
 	protected $timer = 0; 
+	private $unit = 10;
 
 	function __construct(int $timer)
 	{
@@ -30,9 +31,27 @@ class Tempo
 	}
 	function substractTime(int $time)
 	{
-		if($this->timer - $time <= 0)
+		if($this->timer - $time <= 0) {
 			$this->timer = 0;
+			return;
+		}
 
 		$this->timer -= $time;
+		return;
+	}
+
+	function increment()
+	{
+		$this->timer += $unit;
+	}
+	function decrement()
+	{
+		if($this->timer-$unit <= 0) {
+			$this->timer = 0;
+			return;
+		}
+
+		$this->timer -= $unit;
+		return;
 	}
 }
